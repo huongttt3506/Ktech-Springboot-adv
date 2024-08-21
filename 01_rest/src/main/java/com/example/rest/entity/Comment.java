@@ -14,9 +14,9 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Setter
-    private String writer;
-    @Setter
     private String content;
+    @Setter
+    private String writer;
     @Setter
     @ManyToOne
     private Article article;
