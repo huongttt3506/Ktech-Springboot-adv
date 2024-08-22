@@ -1,5 +1,6 @@
 package com.example.validation.dto;
 
+import com.example.validation.constraints.annotations.EmailBlackList;
 import com.example.validation.constraints.annotations.EmailWhiteList;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -19,8 +20,9 @@ public class UserDto {
     @Size(min = 8, message = "username length min: 8")
     private String username;
 
-    @Email
-    @EmailWhiteList
+//    @Email
+//    @EmailWhiteList
+    @EmailBlackList(blackList = {"malware.good"})
     private String email;
 
     @Min(value = 14, message = "must be over 14")
@@ -29,4 +31,9 @@ public class UserDto {
     //"yyyy-mm-dd"
     @Future
     private LocalDate validUntil;
+
+    //TODO
+    //이 DAY에 들어가는 DATA가 "mon", "tue", "wed", "thu" "sat", "sun"
+    // 중 하나가 될 수 있도록 annotation 을 만들어 봅시다
+    private String day;
 }
